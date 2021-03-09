@@ -1,6 +1,35 @@
-*{
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
+body {
+  height: 100vh;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  border: 2px solid black;
+  min-height: 35px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  height: auto;
+}
+#add-item__input {
+  display: block;
+  width: 100%;
+  display: flex;
+}
+.btn {
+  display: block;
+  width: 20%;
+}
+.todo-list__items {
+  height: 100%;
+}

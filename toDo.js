@@ -1,23 +1,29 @@
 const main = new Map();
-//Add item
-function addItem(id, taskName, isCompleted, importent, date = new Date()) {
+const initIds = Array(100)
+  .fill()
+  .map((_, i) => i + 1);
+const ids = new Set(initIds);
+//todo work on logic
+const addId = () => {
+  let i = Math.floor(Math.random() * 100);
+  if (ids.has(i)) {
+    ids.delete(i);
+    return i;
+  } else {
+    let i = Math.floor(Math.random() * 100);
+    ids.delete(i);
+    return i;
+  }
+};
+//Add item with randome id
+function addItem(id, taskName) {
   main.set(id, {
     taskName: taskName,
-    isCompleted: isCompleted,
-    importent: importent,
-    date: date,
+    isCompleted: false,
+    importent: false,
+    date: new Date(),
   });
 }
-addItem(1, "build a TODO app", false, true);
-addItem(2, "talk to myself", true, false);
-addItem(3, "go for a walk", false, true);
-addItem(4, "think about weekend project", false, false);
-addItem(
-  5,
-  "listen to pini and dont waste time on non importent bits of code",
-  false,
-  true
-);
 
 // TODO refactor helper function DRY
 
@@ -77,7 +83,7 @@ function listByImportence() {
   });
   return temp;
 }
-
+//list by date,config requierd
 function listByDate() {
   let arr = [];
   for (let listItem of main.values()) {
@@ -87,4 +93,22 @@ function listByDate() {
     return b.date - a.date;
   });
   return temp;
+}
+
+//events and data
+const $ = (x) => document.querySelector(x);
+const body = $("body");
+const addItemInput = $("#add-item__input");
+const addItemBtn = $("#add-item__btn");
+const todoList = $(".todo-list__items");
+addItemBtn.addEventListener("click", evenetAdd);
+function evenetAdd(e) {
+  let task = addItemInput.value;
+  if (addItemInput.value) {
+    curId = addId();
+    addItem(curId, task);
+    let item = document.createElement("li");
+    item.inne;
+    console.log(main);
+  }
 }
