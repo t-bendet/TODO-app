@@ -97,11 +97,31 @@ function addItemEvent() {
 // update task event listner
 body.addEventListener("click", editItemEvent);
 // update task event function
+//TODO updating
+//TODO change to get the items by attributes not index(bugs)
+// add handling second click
 function editItemEvent(e) {
-  //TODO all
   if (e.target.dataset.btn === "edit") {
-    console.log(e.target);
-    //change input to visible
+    let liItems = e.target.parentElement.children;
+    console.log(liItems);
+    let editImportence = liItems[0];
+    let editTask = liItems[1];
+    let taskField = liItems[2];
+    let editCategory = liItems[3];
+    let reSend = liItems[4];
+    editCategory.innerHTML = `<select name="categories">
+    <option value="general">General</option>
+    <option value="sport">Sport</option>
+    <option value="work">Work</option>
+    <option value="social-Life">Social Life</option>
+    <option value="personal">Personal</option>
+  </select>`;
+    liItems[2].classList.remove("invisble-input");
+    taskField.placeholder = editTask.innerText;
+    editTask.remove();
+    //back to list item
+
+    //add item back to local storage
   }
 }
 // delete task event listner

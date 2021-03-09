@@ -20,7 +20,7 @@
 - [x] Delete item
 - [x] Mark as done
 - [x] Unmark as done
-- [ ] load from local storage on load
+- [x] load from local storage on load
 
 ##### Local storage
 
@@ -30,5 +30,5 @@
 
 ## last last last-until 14:30
 
-- [ ] add cool design
+- [ ] add design ,add grid?
 - [ ] sort by date and add date data attribute
