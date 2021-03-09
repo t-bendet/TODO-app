@@ -1,16 +1,22 @@
 const main = new Map();
 //Add item
-function addItem(id, taskName, isCompleted) {
-  main.set(id, { taskName: taskName, isCompleted: isCompleted });
+function addItem(id, taskName, isCompleted, importent, date = new Date()) {
+  main.set(id, {
+    taskName: taskName,
+    isCompleted: isCompleted,
+    importent: importent,
+    date: date,
+  });
 }
-addItem(1, "build a TODO app", false);
-addItem(2, "talk to myself", true);
-addItem(3, "go for a walk", false);
-addItem(4, "think about weekend project", false);
+addItem(1, "build a TODO app", false, true);
+addItem(2, "talk to myself", true, false);
+addItem(3, "go for a walk", false, true);
+addItem(4, "think about weekend project", false, false);
 addItem(
   5,
   "listen to pini and dont waste time on non importent bits of code",
-  false
+  false,
+  true
 );
 
 // TODO refactor helper function DRY
@@ -32,7 +38,6 @@ function deleteItem(id) {
   }
   return false;
 }
-console.log(deleteItem(2));
 // mark as done
 function markAsDone(id) {
   if (main.has(id)) {
@@ -49,15 +54,37 @@ function unmarkAsDone(id) {
   }
   return false;
 }
-//list
-function list() {
+//TODO check if sort by date works and add all sort method to one function
+//list by complete completed on top!!
+function listByCompleted() {
   let arr = [];
   for (let listItem of main.values()) {
     arr.push(listItem);
   }
   let temp = [...arr].sort(function (a, b) {
-    return a.isCompleted - b.isCompleted;
+    return b.isCompleted - a.isCompleted;
   });
   return temp;
 }
-list();
+//list by importent,importent  on top!!
+function listByImportence() {
+  let arr = [];
+  for (let listItem of main.values()) {
+    arr.push(listItem);
+  }
+  let temp = [...arr].sort(function (a, b) {
+    return b.importent - a.importent;
+  });
+  return temp;
+}
+
+function listByDate() {
+  let arr = [];
+  for (let listItem of main.values()) {
+    arr.push(listItem);
+  }
+  let temp = [...arr].sort(function (a, b) {
+    return b.date - a.date;
+  });
+  return temp;
+}
