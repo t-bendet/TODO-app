@@ -5,14 +5,14 @@
 - [x] Prioritize the importance of each todo item.
 - [x] sort importance to not important
 - [x] sort newest todo to oldest todo
-- [ ] add todo categories.
+- [x] add todo categories.
 
 ## user interface-until 13:30
 
 ##### ADD ITEM evemt
 
-- [ ] updata todo list (task and date)
-- [ ] change event lisrners from classes to data attr
+- [ ] update todo list (task and date)
+- [x] change event lisrners from classes to data attr
 
 ##### todo list updating
 

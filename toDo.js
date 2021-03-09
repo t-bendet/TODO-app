@@ -1,9 +1,10 @@
+// initalizng map
 const main = new Map();
 const initIds = Array(100)
   .fill()
   .map((_, i) => i + 1);
 const ids = new Set(initIds);
-//todo work on logic
+//todo work on logic of id genartor
 const addId = () => {
   let i = Math.floor(Math.random() * 100);
   if (ids.has(i)) {
@@ -15,15 +16,6 @@ const addId = () => {
     return i;
   }
 };
-//Add item with randome id
-function addItem(id, taskName) {
-  main.set(id, {
-    taskName: taskName,
-    isCompleted: false,
-    importent: false,
-    date: new Date(),
-  });
-}
 
 // TODO refactor helper function DRY
 
@@ -95,20 +87,68 @@ function listByDate() {
   return temp;
 }
 
-//events and data
+//selectors
 const $ = (x) => document.querySelector(x);
 const body = $("body");
-const addItemInput = $("#add-item__input");
-const addItemBtn = $("#add-item__btn");
-const todoList = $(".todo-list__items");
-addItemBtn.addEventListener("click", evenetAdd);
-function evenetAdd(e) {
-  let task = addItemInput.value;
-  if (addItemInput.value) {
-    curId = addId();
-    addItem(curId, task);
-    let item = document.createElement("li");
-    item.inne;
-    console.log(main);
+const taskInput = document.querySelector("input[name='task']");
+const categoriesSelector = document.querySelector("select[name='categories']");
+const checkbox = document.querySelector("input[name='importent']");
+const createTask = document.querySelector("[data-create]");
+const toDoList = document.querySelector("#todo-list");
+//creat task function
+function addItem(id, taskName, categorie, importent) {
+  main.set(id, {
+    taskName: taskName,
+    categorie: categorie,
+    importent: importent,
+    isCompleted: false,
+    date: new Date(),
+  });
+}
+// creat task event listner
+createTask.addEventListener("click", addItemEvent);
+// creat task event function
+function addItemEvent() {
+  let task = taskInput.value;
+  if (task) {
+    // creat map object
+    let currId = addId();
+    let CurrCategorie = categoriesSelector.value;
+    let currImoptent = checkbox.checked;
+    addItem(currId, task, CurrCategorie, currImoptent);
+    //create li
+    let li = document.createElement("li");
+    li.setAttribute("data-id", `${currId}`);
+    toDoList.appendChild(li);
+    //create checkbox
+    let check = document.createElement("input");
+    check.setAttribute("type", "checkbox");
+    li.appendChild(check);
+    //create task
+    let taskText = document.createElement("p");
+    taskText.innerText = task;
+    li.appendChild(taskText);
+    //add category
+    let taskCategory = document.createElement("p");
+    taskCategory.innerText = CurrCategorie;
+    taskCategory.classList.add("categories");
+    //TODO change later and add a class per
+    li.appendChild(taskCategory);
+    //add btns
+    let btnEdit = document.createElement("button");
+    btnEdit.innerText = "Edit";
+    li.appendChild(btnEdit);
+    let btnDelete = document.createElement("button");
+    btnDelete.innerText = "Delete";
+    li.appendChild(btnDelete);
   }
 }
+
+// <li> update
+//   <input name="x" type="checkbox" />
+//   <p>task</p>
+//   <input type="text">
+
+//   <button data-edit>Edit</button>
+//   <button data-delete>Delete</button>
+// </li>

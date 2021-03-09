@@ -7,22 +7,38 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/utility.css" />
     <link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon" />
-    <title>port</title>
+    <title>TODO App</title>
   </head>
   <body>
     <h1>TO DO List</h1>
-    <h3>add Item</h3>
-    <div class="add-item box">
-      <input id="add-item__input" type="text" placeholder="add something" />
-      <button id="add-item__btn" class="btn">add</button>
+    <div class="container">
+      <h3>add Item</h3>
+      <div class="box">
+        <input name="task" type="text" placeholder="add something" />
+        <select name="categories">
+          <option value="general">General</option>
+          <option value="sport">Sport</option>
+          <option value="work">Work</option>
+          <option value="social-Life">Social Life</option>
+          <option value="personal">Personal</option>
+        </select>
+        <input name="importent" type="checkbox" />
+        <button data-create>add</button>
+      </div>
     </div>
-    <div class="todo-list box">
-      <ul class="todo-list__items"></ul>
+    <!--  -->
+    <div class="container">
+      <h3>ToDo list</h3>
+      <ul class="box" id="todo-list">
+        <!-- <li>
+          <input name="x" type="checkbox" />
+          <p>task</p>
+          <input type="text">
+          <button data-edit>Edit</button>
+          <button data-delete>Delete</button>
+        </li> -->
+      </ul>
     </div>
-    <div class="completed box">
-      <div class="item">list?</div>
-    </div>
-
     <script src="./toDo.js"></script>
   </body>
 </html>

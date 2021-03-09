@@ -12,24 +12,25 @@ body {
   justify-content: center;
   align-items: center;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+}
 .box {
   border: 2px solid black;
   min-height: 35px;
-  width: 250px;
+  width: 400px;
   display: flex;
   justify-content: center;
   margin: 1rem;
   height: auto;
 }
-#add-item__input {
-  display: block;
-  width: 100%;
-  display: flex;
-}
+
 .btn {
   display: block;
   width: 20%;
 }
-.todo-list__items {
-  height: 100%;
+
+li {
+  list-style: none;
 }
