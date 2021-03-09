@@ -3,7 +3,7 @@
   margin: 0px;
   padding: 0px;
 }
-
+/* general */
 body {
   height: 100vh;
   background-color: lightblue;
@@ -25,12 +25,20 @@ body {
   margin: 1rem;
   height: auto;
 }
-
+.col {
+  flex-direction: column;
+}
 .btn {
   display: block;
   width: 20%;
 }
-
-li {
+/* list */
+.tesk {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   list-style: none;
+}
+.invisble-input {
+  display: none;
 }

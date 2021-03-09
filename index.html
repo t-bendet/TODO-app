@@ -22,22 +22,23 @@
           <option value="social-Life">Social Life</option>
           <option value="personal">Personal</option>
         </select>
-        <input name="importent" type="checkbox" />
+        <input name="importent" type="checkbox" />importent
         <button data-create>add</button>
       </div>
     </div>
     <!--  -->
     <div class="container">
       <h3>ToDo list</h3>
-      <ul class="box" id="todo-list">
-        <!-- <li>
-          <input name="x" type="checkbox" />
-          <p>task</p>
-          <input type="text">
-          <button data-edit>Edit</button>
-          <button data-delete>Delete</button>
-        </li> -->
-      </ul>
+      <div class="sort-btns">
+        <button data-importance>by importance</button>
+        <button data-category>by category</button>
+        <button data-date>by date</button>
+      </div>
+      <ul class="box col" id="todo-list"></ul>
+    </div>
+    <div class="container">
+      <h3>Completed</h3>
+      <ul class="box col" id="complete"></ul>
     </div>
     <script src="./toDo.js"></script>
   </body>

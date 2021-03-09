@@ -11,23 +11,24 @@
 
 ##### ADD ITEM evemt
 
-- [ ] update todo list (task and date)
 - [x] change event lisrners from classes to data attr
 
 ##### todo list updating
 
-- [ ] list by parm(completed,importance,newest)deafaul completed
-- [ ] Delete item
-- [ ] Mark as done
-- [ ] update a specific todo item
-- [ ] Unmark as done
+- [ ] update todo list
+- [x] list by parm(importance,category)
+- [x] Delete item
+- [x] Mark as done
+- [x] Unmark as done
+- [ ] load from local storage on load
 
 ##### Local storage
 
-- [ ] Q: how does the user sends and control the list info
-- [ ] Read abour local storage
-- [ ] Q: how to use use local storage.(Json.stringify)
+- [x] Q: how does the user sends and control the list info
+- [x] Read abour local storage
+- [x] Q: how to use use local storage.(Json.stringify)
 
 ## last last last-until 14:30
 
 - [ ] add cool design
+- [ ] sort by date and add date data attribute
