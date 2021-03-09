@@ -18,6 +18,7 @@ const addId = () => {
 //selectors
 const $ = (x) => document.querySelector(x);
 const body = $("body");
+const container = $(".container");
 const taskInput = $("input[name='task']");
 const categoriesSelector = $("select[name='categories']");
 const checkbox = $("input[name='importent']");
@@ -65,7 +66,6 @@ function addItemEvent() {
     check.setAttribute("type", "checkbox");
     check.innerText = "complete";
     li.appendChild(check);
-    //TODO add complet or not funcinality
     //create task
     let taskText = document.createElement("p");
     taskText.innerText = task;
@@ -79,7 +79,7 @@ function addItemEvent() {
     let taskCategory = document.createElement("p");
     taskCategory.innerText = CurrCategorie;
     taskCategory.classList.add("categories");
-    //TODO change later and add a class per
+    //TODO change later and add a class
     li.appendChild(taskCategory);
 
     //add btns
@@ -95,19 +95,19 @@ function addItemEvent() {
 }
 
 // update task event listner
-toDoList.addEventListener("click", editItemEvent);
+body.addEventListener("click", editItemEvent);
 // update task event function
 function editItemEvent(e) {
   //TODO all
   if (e.target.dataset.btn === "edit") {
-    console.log(e.currentTarget);
+    console.log(e.target);
     //change input to visible
   }
 }
 // delete task event listner
-toDoList.addEventListener("click", editItemEvent);
+body.addEventListener("click", deleteItemEvent);
 // delete task event function
-function editItemEvent(e) {
+function deleteItemEvent(e) {
   if (e.target.dataset.btn === "delete") {
     let deleteTarget = e.target.parentElement;
     let deleteId = deleteTarget.dataset.id;
@@ -178,4 +178,63 @@ function sorting(by) {
   for (let i = 0, l = toDoDiv.length; i < l; i++) {
     toDoList.appendChild(toDoDiv[i]);
   }
+}
+// on load
+window.addEventListener("load", loading);
+function loading() {
+  //add all tesks to do or to completed
+  for (var i = 0; i < localStorage.length; i++) {
+    let retriveKey = localStorage.key(i);
+    let retriveObj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    loadItemEvent(retriveKey, retriveObj);
+  }
+}
+
+function loadItemEvent(i, object) {
+  let task = object.taskName;
+  let currId = i;
+  let CurrCategorie = object.categorie;
+  let currImportent = object.importent;
+  //create li
+  let li = document.createElement("li");
+  li.setAttribute("data-id", `${currId}`);
+  li.setAttribute("data-categorie", `${CurrCategorie}`);
+  li.setAttribute("data-importent", `${currImportent}`);
+  li.classList.add("tesk");
+  if (object.isCompleted) {
+    completed.appendChild(li);
+  } else {
+    toDoList.appendChild(li);
+  }
+  //create checkbox
+  let check = document.createElement("input");
+  check.setAttribute("type", "checkbox");
+  check.innerText = "complete";
+  li.appendChild(check);
+  //TODO add complet or not funcinality
+  //create task
+  let taskText = document.createElement("p");
+  taskText.innerText = task;
+  li.appendChild(taskText);
+  // add invisible input
+  let invisibleInput = document.createElement("input");
+  invisibleInput.setAttribute("type", "text");
+  invisibleInput.classList.add("invisble-input");
+  li.appendChild(invisibleInput);
+  //add category
+  let taskCategory = document.createElement("p");
+  taskCategory.innerText = CurrCategorie;
+  taskCategory.classList.add("categories");
+  //TODO change later and add a class per
+  li.appendChild(taskCategory);
+
+  //add btns
+  let btnEdit = document.createElement("button");
+  btnEdit.innerText = "Edit";
+  btnEdit.setAttribute("data-btn", "edit");
+  li.appendChild(btnEdit);
+  let btnDelete = document.createElement("button");
+  btnDelete.setAttribute("data-btn", "delete");
+  btnDelete.innerText = "Delete";
+  li.appendChild(btnDelete);
 }
