@@ -15,6 +15,7 @@ const addId = () => {
     return i;
   }
 };
+//TODO divide to data mangment and DOM functions
 //selectors
 const $ = (x) => document.querySelector(x);
 const body = $("body");
@@ -28,8 +29,6 @@ const sortCategory = $("[data-category]");
 const sortDate = $("[data-date]");
 const toDoList = $("#todo-list");
 const completed = $("#complete");
-
-//btnEdit
 //creat task function
 function addItem(id, taskName, categorie, importent) {
   window.localStorage.setItem(
@@ -95,35 +94,35 @@ function addItemEvent() {
 }
 
 // update task event listner
-body.addEventListener("click", editItemEvent);
-// update task event function
-//TODO updating
-//TODO change to get the items by attributes not index(bugs)
-// add handling second click
-function editItemEvent(e) {
-  if (e.target.dataset.btn === "edit") {
-    let liItems = e.target.parentElement.children;
-    console.log(liItems);
-    let editImportence = liItems[0];
-    let editTask = liItems[1];
-    let taskField = liItems[2];
-    let editCategory = liItems[3];
-    let reSend = liItems[4];
-    editCategory.innerHTML = `<select name="categories">
-    <option value="general">General</option>
-    <option value="sport">Sport</option>
-    <option value="work">Work</option>
-    <option value="social-Life">Social Life</option>
-    <option value="personal">Personal</option>
-  </select>`;
-    liItems[2].classList.remove("invisble-input");
-    taskField.placeholder = editTask.innerText;
-    editTask.remove();
-    //back to list item
+// body.addEventListener("click", editItemEvent);
+// // update task event function
+// //TODO updating
+// //TODO change to get the items by attributes not index(bugs)
+// // add handling second click
+// function editItemEvent(e) {
+//   if (e.target.dataset.btn === "edit") {
+//     let liItems = e.target.parentElement.children;
+//     console.log(liItems);
+//     let editImportence = liItems[0];
+//     let editTask = liItems[1];
+//     let taskField = liItems[2];
+//     let editCategory = liItems[3];
+//     let reSend = liItems[4];
+//     editCategory.innerHTML = `<select name="categories">
+//     <option value="general">General</option>
+//     <option value="sport">Sport</option>
+//     <option value="work">Work</option>
+//     <option value="social-Life">Social Life</option>
+//     <option value="personal">Personal</option>
+//   </select>`;
+//     liItems[2].classList.remove("invisble-input");
+//     taskField.placeholder = editTask.innerText;
+//     editTask.remove();
+//     //back to list item
 
-    //add item back to local storage
-  }
-}
+//     //add item back to local storage
+//   }
+// }
 // delete task event listner
 body.addEventListener("click", deleteItemEvent);
 // delete task event function
@@ -186,6 +185,7 @@ function sortByDate(e) {
 //sorting all function
 function sorting(by) {
   let toDoDiv = toDoList.children;
+  //converting an html coolaction to a real array
   toDoDiv = Array.prototype.slice.call(toDoDiv);
   toDoDiv.sort(function (a, b) {
     if (b.dataset[by] < a.dataset[by]) {
