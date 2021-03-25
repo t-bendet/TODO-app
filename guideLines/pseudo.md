@@ -1,4 +1,4 @@
-## functions until-11:15
+ ## functions until-11:15
 
 - [x] Each todo item will show the specific date it was created
 - [x] sort completed to not completed

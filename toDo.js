@@ -108,13 +108,13 @@ function addItemEvent() {
 //     let taskField = liItems[2];
 //     let editCategory = liItems[3];
 //     let reSend = liItems[4];
-//     editCategory.innerHTML = `<select name="categories">
-//     <option value="general">General</option>
-//     <option value="sport">Sport</option>
-//     <option value="work">Work</option>
-//     <option value="social-Life">Social Life</option>
-//     <option value="personal">Personal</option>
-//   </select>`;
+editCategory.innerHTML = `<select name="categories">
+    <option value="general">General</option>
+    <option value="sport">Sport</option>
+    <option value="work">Work</option>
+    <option value="social-Life">Social Life</option>
+    <option value="personal">Personal</option>
+  </select>`;
 //     liItems[2].classList.remove("invisble-input");
 //     taskField.placeholder = editTask.innerText;
 //     editTask.remove();
